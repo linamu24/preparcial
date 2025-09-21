@@ -1,10 +1,12 @@
 "use client";
 import { useAuthors } from "@/context/AuthorsContext";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AuthorsPage() {
   const { authors, loading, deleteAuthor } = useAuthors();
   const router = useRouter();
+  const { t } = useLanguage();
 
   if (loading) return <p>Cargando autores...</p>;
 
@@ -20,7 +22,7 @@ export default function AuthorsPage() {
           cursor: "pointer",
         }}
       >
-      Crear Autor
+      {t.CrearAutor}
       </button>
       
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
@@ -38,9 +40,9 @@ export default function AuthorsPage() {
                 }} />
             )}
             <br />
-            <strong>Nombre:</strong> {author.name}<br />
-            <strong>Fecha de nacimiento:</strong> {author.birthDate} <br />
-            <strong>Descripción:</strong> {author.description} <br />
+            <strong>{t.Nombre}:</strong> {author.name}<br />
+            <strong>{t.FechaNacimiento}:</strong> {author.birthDate} <br />
+            <strong>{t.Descripcion}:</strong> {author.description} <br />
             <br />
             <button
               onClick={() => router.push(`/authors/${author.id}`)}
@@ -53,7 +55,7 @@ export default function AuthorsPage() {
                 cursor: "pointer",
               }}
             >
-              Editar
+              {t.edit}
             </button>
             &nbsp;
             <button
@@ -67,7 +69,7 @@ export default function AuthorsPage() {
                 cursor: "pointer",
               }}
             >
-              Eliminar
+              {t.delete}
             </button>
           </div>
         ))}

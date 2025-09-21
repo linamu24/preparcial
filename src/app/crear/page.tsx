@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthors } from "@/context/AuthorsContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function CrearAutorPage() {
   const router = useRouter();
@@ -11,6 +12,7 @@ export default function CrearAutorPage() {
   const [birthDate, setBirthDate] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,7 +22,7 @@ export default function CrearAutorPage() {
 
   return (
     <div style={{ padding: "10px" }}>
-      <h1 style={{ fontSize: "24px", fontWeight: "bold" }}>Crear Autor</h1>
+      <h1 style={{ fontSize: "24px", fontWeight: "bold" }}>{t.createAuthor}</h1>
       <form onSubmit={handleSubmit} style={{
             display: "flex",
             flexDirection: "column",
@@ -28,7 +30,7 @@ export default function CrearAutorPage() {
             maxWidth: "400px",
           }}>
         <label>
-          <strong>Nombre:</strong>
+          <strong>{t.Nombre}:</strong>
           <div style={{ border: "1px solid #ccc", padding: "5px" }}>
             <input
               type="text"
@@ -39,7 +41,7 @@ export default function CrearAutorPage() {
           </div>
         </label>
         <label>
-          <strong>Fecha de Nacimiento:</strong>
+          <strong>{t.FechaNacimiento}:</strong>
           <div style={{ border: "1px solid #ccc", padding: "5px" }}>
             <input
               type="date"
@@ -50,7 +52,7 @@ export default function CrearAutorPage() {
           </div>
         </label>
         <label>
-          <strong>Descripción:</strong>
+          <strong>{t.Descripcion}:</strong>
           <div style={{ border: "1px solid #ccc", padding: "5px" }}>
             <textarea
               value={description}
@@ -60,7 +62,7 @@ export default function CrearAutorPage() {
           </div>
         </label>
         <label>
-          <strong>URL Imagen:</strong>
+          <strong>{t.URLImagen}:</strong>
           <div style={{ border: "1px solid #ccc", padding: "5px" }}>
             <input
               type="text"
@@ -80,7 +82,7 @@ export default function CrearAutorPage() {
             cursor: "pointer",
           }}
         >
-          Crear</button>
+          {t.Crear}</button>
       </form>
     </div>
   );

@@ -18,7 +18,10 @@ export const translations = {
     FechaNacimiento: "Fecha de Nacimiento",
     Descripcion: "Descripción",
     URLImagen: "URL de la Imagen",
-    Crear: "Crear"
+    Crear: "Crear",
+    edit: "Editar",
+    delete: "Eliminar"
+    
   },
   en: {
     home: "Home",
@@ -31,7 +34,9 @@ export const translations = {
     FechaNacimiento: "Birth Date",
     Descripcion: "Description",
     URLImagen: "Image URL",
-    Crear: "Create"
+    Crear: "Create",
+    edit: "Edit",
+    delete: "Delete"
   },
 };
 

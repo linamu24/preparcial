@@ -32,8 +32,8 @@ function Navbar() {
         onChange={(e) => setLang(e.target.value as any)}
         style={{ marginLeft: "auto", padding: "5px", color: "white", fontWeight: "bold" }}
       >
-        <option value="es" style={{ fontWeight: lang === "es" ? "bold" : "normal" }}>Español</option>
-        <option value="en" style={{ fontWeight: lang === "en" ? "bold" : "normal" }}>English</option>
+        <option value="es" style={{ color: "black", fontWeight: lang === "es" ? "bold" : "normal" }}>Español</option>
+        <option value="en" style={{ color: "black", fontWeight: lang === "en" ? "bold" : "normal" }}>English</option>
       </select>
     </nav>
   );
