@@ -34,8 +34,10 @@ export default function FavoritosPage() {
           <button
             onClick={() => author.id !== undefined && toggleFavorite(author.id)}
             className="px-2 py-1 rounded bg-yellow-400 text-black"
+            aria-label="Quitar de favoritos"
+            aria-describedby="Peligro: Estas a punto de quitar un autor de tus favoritos"
           >
-            ★ Quitar de favoritos
+            Quitar de favoritos
           </button>
         </div>
       ))}

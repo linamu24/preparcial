@@ -45,6 +45,8 @@ export default function AuthorsPage() {
             <br />
             <button
               onClick={() => router.push(`/authors/${author.id}`)}
+              aria-label="Editar autor"
+              aria-describedby="Estas a punto de editar un autor existente"
               style={{
                 marginBottom: "15px",
                 background: "blue",
@@ -59,6 +61,8 @@ export default function AuthorsPage() {
             &nbsp;
             <button
               onClick={() => deleteAuthor(author.id!)}
+              aria-label="Eliminar autor"
+              aria-describedby="Peligro: Estas a punto de eliminar un autor existente"
               style={{
                 marginBottom: "15px",
                 background: "red",
@@ -72,12 +76,18 @@ export default function AuthorsPage() {
             </button>
             &nbsp;
             <button
-            onClick={() => author.id !== undefined && toggleFavorite(author.id)}
-            className={`px-5 py-1.5 ${
-              author.id !== undefined && favorites.includes(author.id)
-                ? "bg-yellow-400 text-white"
-                : "bg-gray-200"
-            }`}
+              onClick={() => author.id !== undefined && toggleFavorite(author.id)}
+              aria-pressed={author.id !== undefined && favorites.includes(author.id)}
+              aria-label={
+                author.id !== undefined && favorites.includes(author.id)
+                  ? "Eliminar de favoritos"
+                  : "Agregar a favoritos"
+              }
+              className={`px-5 py-1.5 ${
+                author.id !== undefined && favorites.includes(author.id)
+                  ? "bg-yellow-400 text-white"
+                  : "bg-gray-200"
+              }`}
           >
             {author.id !== undefined && favorites.includes(author.id) ? "Favorito" : "Marcar"}
           </button>
