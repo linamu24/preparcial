@@ -29,6 +29,9 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
             <Link href="/crear" style={{ color: "white" }}>
               <strong>Crear Autor</strong>
             </Link>
+            <Link href="/favoritos" style={{ color: "white" }}>
+              <strong>Favoritos</strong>
+            </Link>
           </nav>
 
           <main style={{ padding: "20px" }}>{children}</main>

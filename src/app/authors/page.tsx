@@ -3,7 +3,7 @@ import { useAuthors } from "@/context/AuthorsContext";
 import { useRouter } from "next/navigation";
 
 export default function AuthorsPage() {
-  const { authors, loading, deleteAuthor } = useAuthors();
+  const { authors, favorites, toggleFavorite, loading, deleteAuthor } = useAuthors();
   const router = useRouter();
 
   if (loading) return <p>Cargando autores...</p>;
@@ -27,6 +27,7 @@ export default function AuthorsPage() {
         {authors.map((author) => (
           <div key={author.id} style={{ border: "1px solid #ccc", borderRadius: "5px", padding: "10px" }}>
             {author.image && (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={author.image}
                 alt={author.name}
@@ -69,6 +70,17 @@ export default function AuthorsPage() {
             >
               Eliminar
             </button>
+            &nbsp;
+            <button
+            onClick={() => author.id !== undefined && toggleFavorite(author.id)}
+            className={`px-5 py-1.5 ${
+              author.id !== undefined && favorites.includes(author.id)
+                ? "bg-yellow-400 text-white"
+                : "bg-gray-200"
+            }`}
+          >
+            {author.id !== undefined && favorites.includes(author.id) ? "Favorito" : "Marcar"}
+          </button>
           </div>
         ))}
       </div></>

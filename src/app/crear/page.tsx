@@ -33,7 +33,10 @@ export default function CrearAutorPage() {
             <input
               type="text"
               value={name}
-              style={{ width: "100%"}}
+              style={{ width: "100%" }}
+              aria-invalid= {!name ? "true" : "false"}
+              aria-describedby="name-error"
+              aria-label="Coloca tu Nombre"
               onChange={(e) => setName(e.target.value)}
               required />
           </div>

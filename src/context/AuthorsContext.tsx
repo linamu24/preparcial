@@ -12,6 +12,8 @@ export interface Author {
 interface AuthorsContextType {
   authors: Author[];
   loading: boolean;
+  favorites: number[];
+  toggleFavorite: (id: number) => void;
   createAuthor: (author: Author) => void;
   updateAuthor: (id: number, author: Author) => void;
   deleteAuthor: (id: number) => void;
@@ -24,6 +26,7 @@ const API_URL = "http://127.0.0.1:8080/api/authors";
 export function AuthorsProvider({ children }: { children: React.ReactNode }) {
   const [authors, setAuthors] = useState<Author[]>([]);
   const [loading, setLoading] = useState(true);
+  const [favorites, setFavorites] = useState<number[]>([]);
 
   useEffect(() => {
     const fetchAuthors = async () => {
@@ -55,17 +58,24 @@ export function AuthorsProvider({ children }: { children: React.ReactNode }) {
     setAuthors((prev) => prev.filter((a) => a.id !== id));
   };
 
+  const toggleFavorite = (id: number) => {
+    setFavorites((prev) =>
+      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id]
+    );
+  };
   return (
     <AuthorsContext.Provider
-      value={{ authors, loading, createAuthor, updateAuthor, deleteAuthor }}
+      value={{ authors, loading, favorites, toggleFavorite, createAuthor, updateAuthor, deleteAuthor }}
     >
       {children}
     </AuthorsContext.Provider>
   );
 }
 
+
 export function useAuthors() {
   const ctx = useContext(AuthorsContext);
   if (!ctx) throw new Error("useAuthors must be used dentro de AuthorsProvider");
   return ctx;
 }
+
