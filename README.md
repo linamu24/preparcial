@@ -19,5 +19,6 @@ Se aplico la Accesibilidad:
   - Lo primero es correr el BACK en 127.0.0.1:8080:8080
   - Luego correr el Front con npm run dev, e ingresar a la url que da la terminal.
   - Navegar en la app :)
+    
 nota: No hay pruebas
 
